@@ -1,0 +1,80 @@
+.cellblock {
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
+  padding: 15px;
+  position: relative;
+
+  .removeSelf {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+  }
+
+  &:hover {
+    .removeSelf {
+      display: block;
+      background-color: #aaccbb;
+    }
+  }
+
+  &_content {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 0.7rem;
+    &_unit {
+      display: flex;
+      margin-bottom: 0.7rem;
+      overflow-x: auto;
+      .codemirror-wrapper {
+        flex: 1;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+      }
+    }
+    &_output {
+      display: flex;
+      background-color: #cdabcd;
+    }
+
+    .prompt {
+      min-width: 14ex;
+      text-align: right;
+      padding-right: 0.5rem;
+      .identifier {
+        color: #ccaabb;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      display: block;
+      top: -1px;
+      left: -1px;
+      width: 5px;
+      height: calc(100% + 2px);
+      content: "";
+      border-radius: 2px 0 0 2px;
+      background-color: red;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .cellblock {
+    width: 768px;
+  }
+}
+
+.cm-s-3024-day span.cm-string {
+  color: #fa5f49;
+}
+
+.CodeMirror {
+  height: auto;
+}
