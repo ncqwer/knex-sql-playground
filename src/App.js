@@ -4,8 +4,9 @@ import sqlFormatter from "sql-formatter";
 import { CellBlock } from "./component/cellblock.js";
 import Knex from "knex";
 
-import { uniq } from "ramda";
+import * as R from "ramda";
 
+const { uniq } = R;
 function App() {
   const knex = useRef(null);
   const [cellblockIds, setCellblockIds] = useState(["hello", "world"]);
@@ -52,7 +53,7 @@ function App() {
       //   blocks[blocks.length - 1]
       // }).toString()`;
       /* eslint-disable no-new-func */
-      output = new Function("knex", "trx", code)(knex.current);
+      output = new Function("knex", "R", code)(knex.current, R);
       if (typeof output !== "string")
         output = {
           error: "result is not string,\n maybe you forget call tostring method"
